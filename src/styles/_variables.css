@@ -1,0 +1,15 @@
+:root {
+    /* 프로젝트 사용 컬러 */
+    --bg: #ffffff;
+    --point-color: #FFCC33;
+    --ink: rgba(0, 0, 0, 0.5);
+    --line: rgba(0, 0, 0, 0.1);
+    --black: #000000;
+    --red: #ff0000;
+
+    /* 사이즈 폭, 고정 값*/
+    --container-w: 430px;
+    --top-h: 56px;
+    --tab-h: 64px;
+    --vh: 1vh;
+}
