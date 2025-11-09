@@ -1,7 +1,7 @@
 :root {
     /* 프로젝트 사용 컬러 */
     --bg: #ffffff;
-    --point-color: #FFCC33;
+    --accent: #FFCC33;
     --ink: rgba(0, 0, 0, 0.5);
     --line: rgba(0, 0, 0, 0.1);
     --black: #000000;
@@ -11,5 +11,22 @@
     --container-w: 430px;
     --top-h: 56px;
     --tab-h: 64px;
+    --radius-lg: 14px;
+    --font-base: 16px;
     --vh: 1vh;
+}
+
+.page-style {
+    width: 100%;
+    max-width: var(--container-w);
+    height: calc(var(--vh) * 100);
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: var(--bg);
+    margin: 0 auto;
 }
