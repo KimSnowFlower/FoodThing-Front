@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import TopBar from '../../components/TopBar';
 import TabBar from '../../components/TabBar';
 import TodayWhatEat from './components/TodayWhatEat';
+import RankingSection from './components/RankingSection';
 
 // lib api
 import api from '../../lib/api';
@@ -16,6 +17,7 @@ import "../MainPage/MainPage.module.css";
 import searchIconSrc from '../../assets/images/search_icon.svg';
 import sendIconSrc from '../../assets/images/arrow_circle_icon.svg';
 import todayIconSrc from '../../assets/images/today_what_eat_icon.png';
+import BoardSection from './components/BoardSection';
 
 const MainPage = () => {
     const navigate = useNavigate();
@@ -86,12 +88,12 @@ const MainPage = () => {
             
             boardPromise
                 .then((res) => {
-                    setRanks(Array.isArray(res.data) ? res.data : []);
+                    setPosts(Array.isArray(res.data) ? res.data : []);
                 })
                 .catch((e) => {
                     if(e?.code !== "ERR_CANCELED") {
                         console.error("[/recipe/board 호출 실패", e);
-                        setRanks([]);
+                        setPosts([]);
                     }
                 });
 
@@ -156,10 +158,20 @@ const MainPage = () => {
                         setIngredientInput={setIngredientInput}
                         loading={loading}
                         error={error}
-                        onSumbit={onSumbit}
+                        onSumbit={onSubmitTodayWhatEat}
                         todayIconSrc={todayIconSrc}
                         searchIconSrc={searchIconSrc}
                         sendIconSrc={sendIconSrc}
+                    />
+
+                    <RankingSection laoding={listsLoading} items={rankItems}/>
+
+                    <BoardSection
+                        loading={listsLoading}
+                        items={boardItems}
+                        onNavigateBoard={() => navigate("/board")}
+                        onItemClick={handleBoardItemClick}
+                        formatKST={formatKST}
                     />
                 </div>
                 <TabBar/>
