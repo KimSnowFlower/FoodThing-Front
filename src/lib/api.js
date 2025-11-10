@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const ENV_BASE = import.meta.env.VITE_API_BASE?.replace(/\/+$/, "");
 const baseURL = ENV_BASE || "/api";
@@ -22,7 +22,7 @@ function getCookie(name) {
 const api = axios.create({
     baseURL,
     timeout: 30000,
-    header: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json"},
     withCredentials: true, // 쿠키 인증 변행
 });
 
