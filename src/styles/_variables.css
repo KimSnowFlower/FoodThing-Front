@@ -30,3 +30,4 @@
     background: var(--bg);
     margin: 0 auto;
 }
+@supports (height: 100dvh) { .page-style { min-height: 100dvh; }}
