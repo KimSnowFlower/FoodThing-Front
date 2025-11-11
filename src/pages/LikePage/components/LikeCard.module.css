@@ -5,7 +5,7 @@
     border: 1px solid var(--accent);
     border-radius: 10px;
     padding: 12px;
-    min-height: 88px;
+    max-height: 54px;
     display: flex;
     align-items: center;
     gap: 16px;
