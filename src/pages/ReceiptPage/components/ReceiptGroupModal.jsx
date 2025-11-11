@@ -19,7 +19,7 @@ export default function ReceiptGroupList({ group, onClose }) {
                     <ul className={styles.modalList}>
                         {group.items.map(item => (
                             <li key={item.id} className={styles.modalItem}>
-                                <div className={modalItemName}>{item.ingredient_name}</div>
+                                <div className={styles.modalItemName}>{item.ingredient_name}</div>
                             </li>
                         ))}
                     </ul>

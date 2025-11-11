@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // 비보호 라우트
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 // 보호 라우트
 import MainPage from "./pages/MainPage/MainPage";
 import ReceiptPage from "./pages/ReceiptPage/ReceiptPage";
+import LikePage from "./pages/LikePage/LikePage";
 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -37,11 +38,12 @@ function App() {
       <Router>
         <Routes>
           {/* 공개 라우트 */}
-          <Route path="/login" element={<LoginPage />}/>
+          <Route path="/login" element={<LoginPage />} />
           {/* 보호 라우트 (로그인 인증 후 접근 가능 */}
-          <Route element={<ProtectedRoute/>}>
-            <Route path="/" element={<MainPage />}/>
-            <Route path="/receipt" element={<ReceiptPage/>} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/receipt" element={<ReceiptPage />} />
+            <Route path="likes" element={<LikePage />} />
           </Route>
         </Routes>
       </Router>
