@@ -1,0 +1,120 @@
+.btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 14px 12px;
+    cursor: pointer;
+}
+
+/* 카드 상단 */
+.head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.food {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    border: 1px solid transparent;
+}
+
+.easy {
+    background: #e8f7e9;
+    border-color: #c7ebcc;
+}
+
+.normal {
+    background: #f1f8e9;
+    border-color: #d9eec9;
+}
+
+.medium {
+    background: #fff6d8;
+    border-color: #ffe7a3;
+}
+
+.hard {
+    background: #ffe9e4;
+    border-color: #ffc5b6;
+}
+
+.expert {
+    background: #fde6ff;
+    border-color: #f6c9ff;
+}
+
+.time {
+    font-size: 12px;
+    color: #333;
+    background: #fafafa;
+    border: 1px solid rgba(0, 0, 0, .06);
+    border-radius: 999px;
+    padding: 0 8px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+/* 설명 */
+.desc {
+    margin: 10px 0 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #333;
+}
+
+/* 재료 */
+.ing {
+    margin-top: 4px;
+}
+
+.ingTitle {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.chips {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    font-size: 13px;
+    background: #fafafa;
+    border: 1px solid rgba(0, 0, 0, .06);
+    border-radius: 999px;
+    padding: 6px 10px;
+}
+
+.muted {
+    color: #6b6b6b;
+    font-size: 13px;
+}

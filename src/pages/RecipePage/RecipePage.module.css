@@ -1,0 +1,61 @@
+.page {
+    width: 100%;
+    max-width: var(--container-w);
+    min-height: calc(var(--vh) * 100);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--bg);
+    margin: 0 auto;
+}
+
+.wrap {
+    width: 100%;
+    max-width: var(--container-w);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: calc(var(--top-h) + var(--safe-top));
+    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
+}
+
+/* 스크롤 영역 */
+.content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: calc((var(--vh) * 100) - var(--top-h) - var(--tab-h) - var(--safe-top) - var(--safe-bottom));
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 16px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 6px 0 4px;
+    text-align: left;
+    width: 100%;
+}
+
+/* 리스트/카드(Grid) */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    width: 100%;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    padding: 0;
+    /* 버튼 내부에서 패딩 처리 */
+}
