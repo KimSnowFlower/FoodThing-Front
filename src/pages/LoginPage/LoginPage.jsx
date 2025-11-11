@@ -11,7 +11,7 @@ import styles from "../LoginPage/LoginPage.module.css";
 // assets
 import foodthingLogo from "../../assets/images/FoodThing.png";
 
-const LoginPage = () => {
+export default function LoginPage ()  {
     return (
         <div className={styles.loginPage}>
             <div className={styles.loginWrap}>
@@ -27,5 +27,3 @@ const LoginPage = () => {
         </div>
     );
 }
-
-export default LoginPage;

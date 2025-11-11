@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-//import TopBar from "../../components/TopBar";
-//import TabBar from "../../components/TabBar";
+import TopBar from "../../components/TopBar";
+import TabBar from "../../components/TabBar";
 import api from "../../lib/api";
 
 import TodayWhatEatSection from "./components/TodayWhatEat";
@@ -116,6 +116,8 @@ export default function MainPage() {
     return (
         <div className={styles.mainPage}>
             <div className={styles.mainWrap}>
+                <TopBar/>
+
                 <main className={styles.mainContent} role="main">
                     {/* 오늘 뭐 해먹지? */}
                     <TodayWhatEatSection
@@ -143,6 +145,8 @@ export default function MainPage() {
                         formatDate={formatKST}
                     />
                 </main>
+
+                <TabBar/>
             </div>
         </div>
     );

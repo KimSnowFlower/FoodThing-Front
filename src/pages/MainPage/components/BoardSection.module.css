@@ -1,14 +1,14 @@
 .navigateBtn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    background: #FFD95F;
-    color: #2d2d2d;
+    background: var(--accent);
+    color: var(--black);
     font-weight: 700;
     padding: 6px 10px;
     border-radius: 10px;
     font-size: 13px;
     line-height: 1;
-    height: 28px;
+    height: 16px;
     border: none;
     cursor: pointer;
 }
@@ -30,6 +30,7 @@
     border-radius: 8px;
     border: 1px solid #f1f1f1;
     background: #fff;
+    cursor: pointer;
 }
 
 .item:hover {
