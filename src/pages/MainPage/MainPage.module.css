@@ -1,197 +1,40 @@
-/* 메인 */
-.main-wrap {
+.mainPage {
     width: 100%;
-    height: 100vh;
     max-width: var(--container-w);
-    margin: 0 auto;
+
+    height: calc(var(--vh) * 100);
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.mainWrap {
+    width: 100%;
+    max-width: var(--container-w);
     display: flex;
     flex-direction: column;
     position: relative;
     min-height: 0;
 
-    padding-top: calc(var(--top-h));
-    padding-bottom: calc(var(--tab-h));
+    padding-top: calc(var(--top-h) + var(--safe-top));
+    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
 }
 
-.main-content {
-    min-height: calc(100vh - var(--top-h) - var(--tab-h));
+.mainContent {
+    min-height: calc(100vh - var(--top-h) - var(--tab-h) - var(--safe-top) - var(--safe-bottom));
     padding-top: calc(var(--top-h) + 16px);
     padding-bottom: calc(var(--tab-h) + 16px);
-    padding-left: 16px;
-    padding-right: 16px;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
     box-sizing: border-box;
     overflow: auto;
 }
-
-/* 오늘 뭐 해먹지? */
-.main-today-what-eat {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    border-radius: var(--radius-lg);
-    border-color: var(--accent);
-    border: 1px solid var(--accent);
-    background: var(--bg);
-    border-radius: 12px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-    flex: 0 0 auto;
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.card-icon { font-size: 28px; }
-.card-title { margin: 0; font-size: 18px; font-weight: 700; }
-
-/* 검색 필드 */
-.search-form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.search-form .search-field {
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex: 1;
-    margin-left: 8px;
-}
-
-.search-field input[type="text"] {
-    width: 100%;
-    padding: 10px 38px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-    background: #fff;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-.search-field .search-icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    
-}
-
-.search-field .send-icon {
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    padding: 6px;
-    cursor: pointer;
-    color: #333;
-}
-
-.main-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    border: 1px solid var(--accent);
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    flex: 0 0 auto;
-}
-
-.board-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.badge,
-.board-navigate-button {
-  display: flex;
-  align-items: center;
-  background: #FFD95F;
-  color: #2d2d2d;
-  font-weight: 700;
-  align-self: flex-start;
-  padding: 6px 10px;
-  border-radius: 10px;
-  font-size: 13px;
-  line-height: 1;
-  height: 28px;
-  box-sizing: border-box;
-}
-
-.board-navigate-button {
-  margin-left: auto;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  appearance: none;
-}
-
-/* 리스트 공통 */
-.ranking-list,
-.board-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.ranking-item,
-.board-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #f1f1f1;
-    background: #fff;
-    cursor: pointer;
-}
-
-.ranking-item:hover,
-.board-item:hover {
-    background: #fffaf0;
-}
-
-.item-left, .rank-left, .board-left { display: flex; flex-direction: column; gap: 6px; }
-.item-right, .board-right { color: #666; font-size: 13px; text-align: right; max-width: 40%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.title, .rank-title, .board-title { font-weight: 700; font-size: 15px; }
-.sub, .rank-sub, .board-author { color: #8a8a8a; font-size: 13px; }
-
-.stars { color: #f5c542; letter-spacing: 2px; }
-
-.ranking-list::-webkit-scrollbar,
-.board-list::-webkit-scrollbar {
-    height: 8px; width: 8px;
-}
-
-.ranking-list::-webkit-scrollbar-thumb,
-.board-list::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.08);
-    border-radius: 8px;
-}
-
-.error-text { color: #c0392b; margin-top: 8px; font-size: 13px; }
