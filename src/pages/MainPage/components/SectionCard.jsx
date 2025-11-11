@@ -1,6 +1,5 @@
 import styles from "../components/SectionCard.module.css";
 
-
 export default function SectionCard({ title, right, children }) {
     return (
         <section className={styles.card}>

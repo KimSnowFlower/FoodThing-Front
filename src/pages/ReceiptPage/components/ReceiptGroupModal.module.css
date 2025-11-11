@@ -32,6 +32,7 @@
 
 .modalHeader h3 {
     margin: 0;
+    color: var(--font);
     font-size: 16px;
     font-weight: 800;
 }
@@ -62,12 +63,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: #fafafa;
+    background: var(--bg);
     border-bottom: 2px solid var(--accent);
     margin-bottom: 12px;
 }
 
 .modalItemName {
+    color: var(--font);
     font-weight: 700;
 }
 
@@ -76,4 +78,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 8px;
+}
+
+.modalSummaryText,
+.modalSummaryCount {
+    color: var(--font);
 }

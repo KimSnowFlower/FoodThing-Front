@@ -1,5 +1,5 @@
 import RecipeCard from "./RecipeCard";
-import styles from "../../RecipePage/RecipePage.module.css";
+import styles from "../RecipePage.module.css";
 
 export default function RecipeList({ recipes, onItemClick }) {
     return (

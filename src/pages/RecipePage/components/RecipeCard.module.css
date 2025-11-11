@@ -1,5 +1,5 @@
 .btn {
-    width: 100%;
+    width: 90%;
     background: none;
     border: none;
     text-align: left;
@@ -7,7 +7,6 @@
     cursor: pointer;
 }
 
-/* 카드 상단 */
 .head {
     display: flex;
     align-items: flex-start;
@@ -16,6 +15,7 @@
 }
 
 .food {
+    color: var(--text);
     margin: 0;
     font-size: 18px;
     font-weight: 800;
@@ -108,7 +108,9 @@
 
 .chip {
     font-size: 13px;
-    background: #fafafa;
+    background: var(--accent);
+    color: var(--text);
+    font-weight: 700;
     border: 1px solid rgba(0, 0, 0, .06);
     border-radius: 999px;
     padding: 6px 10px;
