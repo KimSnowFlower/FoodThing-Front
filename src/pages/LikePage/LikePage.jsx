@@ -43,12 +43,35 @@ export default function LikePage() {
         };
     }, []);
 
-    const openDetail = (item) => {
-        if (item?.id)
-            navigate(`/recipe/${item.id}`, { state: { result: item } });
-        else console.info("open detail:", item);
+    const normalizeLikeItem = (it) => {
+        const r = it?.recipe ?? it ?? {};
+        return {
+            id: it?.id ?? r?.id ?? null,
+            food: r?.food ?? "",
+            difficulty: r?.difficulty ?? null,
+            cooking_time: r?.cooking_time ?? null,
+            use_ingredients: r?.use_ingredients ?? [],
+            steps: r?.steps ?? [],
+            tip: r?.tip ?? null,
+            video: r?.video ?? null,
+            tag: r?.tag ?? [],
+            _ai_provider: r?._ai_provider ?? it?._ai_provider ?? "ollama",
+        };
     };
 
+    const openDetailByItem = (it) => {
+        const result = normalizeLikeItem(it);
+        // URL에 id를 넣고, state.result로 flat 데이터를 보냄
+        navigate("/recommend/result", { state: { result } });
+    };
+
+    // "번호(인덱스)"로 열고 싶을 때 버전
+    const openDetailByIndex = (idx) => {
+        const it = items[idx];
+        if (!it) return;
+        const result = normalizeLikeItem(it);
+        navigate("/recommend/result", { state: { result } });
+    };
     return (
         <div className={styles.page}>
             <div className={styles.wrap}>
@@ -77,7 +100,7 @@ export default function LikePage() {
                                     key={it.id || `${it.food}-${idx}`}
                                     item={it}
                                     rank={idx + 1}
-                                    onClick={() => openDetail(it)}
+                                    onClick={() => openDetailByItem(it)}
                                 />
                             ))
                         )}

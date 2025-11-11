@@ -28,7 +28,6 @@ export default function BoardDetailPage() {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
-        document.title = "게시글 상세 - 보드";
         if (id != null) fetchPostDetail(id);
     }, [id]);
 
@@ -50,10 +49,6 @@ export default function BoardDetailPage() {
         <div className={styles.page}>
             <TopBar />
             <div className={styles.container}>
-                <button type="button" className={styles.backBtn} onClick={() => navigate("/board")}>
-                    ← 뒤로가기
-                </button>
-
                 <div className={styles.content}>
                     {post ? (
                         <article className={styles.card}>
@@ -85,6 +80,9 @@ export default function BoardDetailPage() {
                     )}
                 </div>
             </div>
+            <button type="button" className={styles.backBtn} onClick={() => navigate("/board")}>
+                뒤로가기
+            </button>
 
             <div className={styles.tabbarFixed}>
                 <TabBar />

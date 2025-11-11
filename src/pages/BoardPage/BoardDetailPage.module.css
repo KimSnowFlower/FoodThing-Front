@@ -1,9 +1,9 @@
 .page {
     width: 100%;
     max-width: var(--container-w);
+
     height: calc(var(--vh) * 100);
-    min-height: -webkit-fill-available;
-    margin: 0 auto;
+    min-height: 0;
     background: var(--bg);
     display: flex;
     flex-direction: column;
@@ -16,8 +16,7 @@
     width: 100%;
     max-width: var(--container-w);
     margin: 0 auto;
-    padding-top: calc(var(--top-h) + var(--safe-top));
-    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
+    padding-top: calc(var(--top-h) + 12px);
     padding-left: 12px;
     padding-right: 12px;
     display: flex;
@@ -28,7 +27,8 @@
 
 .content {
     flex: 1 1 auto;
-    min-height: 0;
+    min-height: auto;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,27 +40,30 @@
 
 .backBtn {
     align-self: center;
-    width: 100%;
+    width: 90%;
     max-width: var(--reading-w);
-    margin: 4px auto 0;
-    padding: 8px 0 12px;
-    color: var(--muted);
-    font-size: 14px;
-    background: transparent;
-    border: none;
-    text-align: left;
+    margin: 0;
+    padding: 0;
+    color: var(--font);
+    font-weight: 600;
+    font-size: 20px;
+    background: var(--accent);
+    text-align: center;
     cursor: pointer;
-    border-bottom: 1px solid var(--hairline);
+    border-radius: 16px;
+    border: 2px solid var(--accent);
 }
 
 .card {
     width: 100%;
     max-width: var(--reading-w);
     background: var(--card-bg);
+    border: 1px solid var(--ink);
     border-radius: var(--radius-lg);
     box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
     padding: 18px;
     margin: 12px auto 20px;
+    flex-shrink: 0;
 }
 
 .head {
@@ -108,8 +111,7 @@
 .detailImg {
     display: block;
     width: 100%;
-    height: auto;
-    max-height: 60vh;
+    height: 100%;
     object-fit: contain;
     background: #f2f4f7;
 }
