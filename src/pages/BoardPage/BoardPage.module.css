@@ -1,13 +1,3 @@
-:root {
-    --container-w: 430px;
-    --bg: #ffffff;
-    --top-h: 56px;
-    --tab-h: 64px;
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
-    --vh: 1vh;
-}
-
 .page {
     width: 100%;
     max-width: var(--container-w);

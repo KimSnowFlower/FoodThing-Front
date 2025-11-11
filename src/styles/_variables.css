@@ -1,23 +1,32 @@
 :root {
-    /* 프로젝트 사용 컬러 */
-    --bg: #ffffff;
-    --accent: #FFCC33;
-    --ink: rgba(0, 0, 0, 0.5);
-    --line: rgba(0, 0, 0, 0.1);
-    --black: #000000;
-    --red: #ff0000;
-    --shadow:0 6px 18px rgba(0,0,0,.06);
+  /* 프로젝트 사용 컬러 */
+  --bg: #ffffff;
+  --accent: #FFCC33;
+  --ink: rgba(0, 0, 0, 0.5);
+  --line: rgba(0, 0, 0, 0.1);
+  --black: #000000;
+  --red: #ff0000;
+  --shadow: 0 6px 18px rgba(0, 0, 0, .06);
+  --text: #222;
+  --muted: #666;
+  --hairline: rgba(0, 0, 0, .08);
+  --card-bg: #fff;
+  --bd: #e5e5e5;
+  --card: #efefef;
 
-    /* 사이즈 폭, 고정 값*/
-    --container-w: 430px;
-    --top-h: 56px;
-    --tab-h: 64px;
-    --radius-lg: 14px;
-    --font-base: 16px;
-    --vh: 1vh;
+  /* 사이즈 폭, 고정 값*/
+  --container-w: 430px;
+  --reading-w: 430px;
+  --top-h: 56px;
+  --tab-h: 64px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --font-base: 16px;
+  --vh: 1vh;
 }
 
-body, #root {
+body,
+#root {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -27,11 +36,11 @@ body, #root {
   background: var(--bg);
 }
 
-body{
-  margin:0;
+body {
+  margin: 0;
   font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--ink);
-  font-size:16px;
-  overflow-x:hidden;
+  font-size: 16px;
+  overflow-x: hidden;
 }
