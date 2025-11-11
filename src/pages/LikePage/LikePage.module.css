@@ -18,13 +18,13 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding-top: calc(var(--top-h) + var(--safe-top));
-    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
+    padding-top: calc(var(--top-h));
+    padding-bottom: calc(var(--tab-h));
 }
 
 .container {
-    padding-top: calc(var(--top-h) + var(--safe-top));
-    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
+    padding-top: calc(var(--top-h) + 45px);
+    padding-bottom: calc(var(--tab-h));
     min-height: calc(100vh - var(--top-h) - var(--tab-h));
     padding: 12px;
     flex: 1;

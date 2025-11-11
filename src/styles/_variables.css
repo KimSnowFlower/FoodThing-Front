@@ -13,6 +13,8 @@
   --card-bg: #fff;
   --bd: #e5e5e5;
   --card: #efefef;
+  --input-bg: #fff;
+  --input-bd: #e8e3da;
 
   /* 사이즈 폭, 고정 값*/
   --container-w: 430px;
