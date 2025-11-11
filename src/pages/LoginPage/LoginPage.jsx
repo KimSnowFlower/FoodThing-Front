@@ -13,7 +13,7 @@ import foodthingLogo from "../../assets/images/FoodThing.png";
 
 const LoginPage = () => {
     return (
-        <div className={`${styles.loginPage} page-style`}>
+        <div className={styles.loginPage}>
             <div className={styles.loginWrap}>
                 { /* 로고 부분 */}
                 <AuthLogo src={foodthingLogo} alt="FoodThing 로고"/>

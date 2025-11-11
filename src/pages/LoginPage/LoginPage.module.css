@@ -24,5 +24,6 @@
 .loginWrap{
   width:100%;
   max-width: var(--container-w);
+  min-width: 0;
   margin: 0 auto;
 }

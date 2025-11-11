@@ -1,0 +1,31 @@
+.helperLinks {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 4px 0 6px;
+    color: var(--muted);
+    flex-wrap: nowrap;
+}
+
+.textLink {
+    width: 25%;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: var(--font-base);
+    white-space: nowrap;
+    flex: 0 0 auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textLink:hover { text-decoration: underline; }
+
+.divider {
+    color: #C9C1B4;
+}

@@ -12,7 +12,7 @@ export default function ProtectedRoute() {
 
     // 미인증이면 페이지 이동
     if (!authed) {
-        return <Navigate to="/login" replcae state={{ form: location }}/>;
+        return <Navigate to="/login" replace state={{ form: location }}/>;
     }
 
     // 인증 0K -> 자식 라우트 표시

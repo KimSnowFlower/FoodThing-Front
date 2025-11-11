@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
-import "../lib/api";
+import api from "../lib/api";
 
 const AuthContext = createContext(null);
 const TOKEN_NAME = "access_token";
@@ -34,7 +34,7 @@ function deleteCookie(name) {
 function setCookie(name, value, days = 7) {
     if (!hasDocument()) return;
 
-    const expires = new Data(Date.now() + days * 864e5).toUTCString();
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
 
     document.cookie = `${name}=${encodeURIComponent(
         value
@@ -43,14 +43,14 @@ function setCookie(name, value, days = 7) {
     }`;
 
     try {
-        localStorage.setItem("__auth_event__", JSON.stringify({ t: Date.now(), ev: "logout"}));
+        localStorage.setItem("__auth_event__", JSON.stringify({ t: Date.now(), ev: "login"}));
     } catch {}
 }
 
 // JWT helpers
 function decodeJwt(token) {
     try {
-        const base64Url = token.split(".")[i];
+        const base64Url = token.split(".")[1];
 
         if (!base64Url) return null;
 
@@ -141,7 +141,7 @@ export function AuthProvider({ children }) {
         setLoading(true);
 
         try {
-            const res = await api.post("users/log-in", { email, password });
+            const res = await api.post("/users/log-in", { email, password });
 
             const token = 
                 res.data?.access_token ||
@@ -167,7 +167,7 @@ export function AuthProvider({ children }) {
         } catch(e) {
             return {
                 ok: false,
-                error: e?.message || "로그인 좀 오류가 발생했습니다.",
+                error: e?.message || "로그인 중 오류가 발생했습니다.",
             };
         } finally {
             setLoading(false);

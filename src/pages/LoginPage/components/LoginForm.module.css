@@ -1,0 +1,63 @@
+.loginForm {
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0 10px;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.loginForm input {
+    width: 100%;
+    max-width: 100%;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: var(--bg);
+    padding: 0 18px;
+    font-size: var(--font-base);
+    outline: none;
+    color: var(--ink);
+    caret-color: var(--ink);
+    box-shadow: var(--shadow);
+}
+
+.loginForm input::placeholder {
+    color: var(--ink);
+    opacity: 1;
+}
+
+.loginForm input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04), var(--shadow);
+}
+
+.loginButton {
+    height: 56px;
+    border-radius: var(--radius-lg);
+    border: 0;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: var(--font-base);
+    letter-spacing: .02em;
+    cursor: pointer;
+    margin-top: 6px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginButton:active { transform: translateY(1px);}
