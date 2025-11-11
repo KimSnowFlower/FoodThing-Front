@@ -1,0 +1,28 @@
+.loginPage {
+  background: var(--bg);
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+@supports not (height: 100dvh){
+  .loginPage{ min-height: 100svh; }
+}
+@supports not (height: 100svh){
+  .loginPage{ min-height: calc(var(--vh) * 100); }
+}
+
+/* iOS 사파리 안정화 */
+@supports (-webkit-touch-callout: none){
+  body{ min-height: -webkit-fill-available; }
+}
+
+/* 컨테이너: 모바일은 100%, 큰 화면에서는 430px 상한 */
+.loginWrap{
+  width:100%;
+  max-width: var(--container-w);
+  margin: 0 auto;
+}

@@ -1,7 +1,14 @@
 import { useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
+// 비보호 라우트
+import LoginPage from "./pages/LoginPage/LoginPage";
+
+// 보호 라우트
 import MainPage from "./pages/MainPage/MainPage";
+
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 import './App.css';
 
@@ -25,9 +32,18 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Route path="/" element={<MainPage/>}></Route>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* 공개 라우트 */}
+          <Route path="/login" element={<LoginPage />}/>
+          {/* 보호 라우트 (로그인 인증 후 접근 가능 */}
+          <Route element={<ProtectedRoute/>}>
+            <Route path="/" element={<MainPage />}/>
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 

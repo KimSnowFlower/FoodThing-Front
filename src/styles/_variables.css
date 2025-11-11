@@ -16,6 +16,19 @@
     --vh: 1vh;
 }
 
+html{ -webkit-text-size-adjust: 100%; }
+*{ box-sizing: border-box; }
+html, body, #root{ height:100%; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", Roboto, Arial, sans-serif;
+  background: var(--login-bg);
+  color: var(--ink);
+  font-size:16px;
+  overflow-x:hidden; /* 우발적 가로 스크롤 방지 → 초기 스케일 흔들림 방지 */
+}
+
 .page-style {
     width: 100%;
     max-width: var(--container-w);

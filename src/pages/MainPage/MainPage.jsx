@@ -2,13 +2,13 @@ import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // components
-import TopBar from '../../components/TopBar';
-import TabBar from '../../components/TabBar';
+//import TopBar from '../../components/TopBar';
+//import TabBar from '../../components/TabBar';
 import TodayWhatEat from './components/TodayWhatEat';
 import RankingSection from './components/RankingSection';
 
 // lib api
-import api from '../../lib/api';
+import api from "../../lib/api";
 
 // css
 import "../MainPage/MainPage.module.css";
@@ -150,8 +150,6 @@ const MainPage = () => {
     return(
         <div className="main-page page-style">
             <div className="main-wrap">
-                <TopBar/>
-
                 <div className="main-content" role="main">
                     <TodayWhatEat
                         ingredientInput={ingredientInput}
@@ -174,7 +172,6 @@ const MainPage = () => {
                         formatKST={formatKST}
                     />
                 </div>
-                <TabBar/>
             </div>
         </div>
     );
