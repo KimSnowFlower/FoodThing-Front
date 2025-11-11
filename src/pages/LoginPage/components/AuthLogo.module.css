@@ -1,3 +1,11 @@
+.logoContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(72%, 340px);
+    margin: 0 auto 12px;
+}
+
 .logoImg {
     width: 100%;
     height: auto;

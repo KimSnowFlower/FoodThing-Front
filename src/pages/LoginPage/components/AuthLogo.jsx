@@ -1,7 +1,7 @@
 import React from "react";
 
 // css
-import styles from "../../LoginPage/components/AuthLogo.module.css";
+import styles from "../components/AuthLogo.module.css"
 
 export default function AuthLogo({ src, alt = "logo" }) {
     return (

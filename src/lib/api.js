@@ -23,7 +23,7 @@ const api = axios.create({
     baseURL,
     timeout: 30000,
     headers: { "Content-Type": "application/json"},
-    withCredentials: true, // 쿠키 인증 변행
+    withCredentials: true, // 쿠키 인증 변경
 });
 
 // 요청 인터셉터
@@ -44,7 +44,7 @@ api.interceptors.request.use((cfg) => {
 
         // baseURL과 url이 둘 다 슬래시로 끝/시작하는 경우를 정리
         const urlPath = String(cfg.url || "").replace(/^\/+/, "");
-        const full = `${(cfg.baseURL || "").replace(/\+$/)}/${urlPath}`;
+        const full = `${String(cfg.baseURL || "").replace(/\+$/)}/${urlPath}`;
 
         console.debug("[API req]", method, full, {
             attachedAuth: !!token,

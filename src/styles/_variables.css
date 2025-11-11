@@ -6,6 +6,7 @@
     --line: rgba(0, 0, 0, 0.1);
     --black: #000000;
     --red: #ff0000;
+    --shadow:0 6px 18px rgba(0,0,0,.06);
 
     /* 사이즈 폭, 고정 값*/
     --container-w: 430px;
@@ -19,6 +20,11 @@
 html{ -webkit-text-size-adjust: 100%; }
 *{ box-sizing: border-box; }
 html, body, #root{ height:100%; }
+
+#root {
+    margin: 0 auto;
+    text-align: center;
+}
 
 body{
   margin:0;
@@ -42,5 +48,6 @@ body{
     overflow: hidden;
     background: var(--bg);
     margin: 0 auto;
+    padding: 0;
 }
 @supports (height: 100dvh) { .page-style { min-height: 100dvh; }}
