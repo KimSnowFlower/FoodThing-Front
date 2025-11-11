@@ -6,11 +6,13 @@ import styles from "./BoardSection.module.css";
 export default function BoardSection({ loading, items, onClickItem, formatDate }) {
     const navigate = useNavigate();
 
+    const goBoard = () => navigate("/board");
+
     return (
         <SectionCard
             title="게시판"
             right={
-                <button type="button" className={styles.navigateBtn} onClick={() => navigate("/board")}>
+                <button type="button" className={styles.navigateBtn} onClick={() => goBoard()}>
                     게시판 이동
                 </button>
             }

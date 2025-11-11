@@ -13,6 +13,7 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import BoardPage from "./pages/BoardPage/BoardPage";
 import BoardWrite from "./pages/BoardPage/BoardWritePage";
 import BoardDetail from "./pages/BoardPage/BoardDetailPage";
+import RecommendResultPage from "./pages/RecommendPage/RecommendResultPage";
 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -54,6 +55,7 @@ function App() {
             <Route path="/board" element={<BoardPage />} />
             <Route path="/board/write" element={<BoardWrite />} />
             <Route path="/board/details" element={<BoardDetail />} />
+            <Route path="/recommend/result" element={<RecommendResultPage />} />
           </Route>
         </Routes>
       </Router>
