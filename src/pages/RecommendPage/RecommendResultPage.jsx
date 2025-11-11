@@ -49,7 +49,8 @@ export default function RecommendResultPage() {
     const [isLiking, setIsLiking] = useState(false);
     const [liked, setLiked] = useState(false);
 
-    const data = location.state?.result || null;
+    const raw = location.state?.result || location.state?.recipe || null;
+    const data = raw && raw.recipe ? raw.recipe : raw; // recipe 안에 또 있으면 펼치기
 
     if (!data) {
         return (
