@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import MainPage from "./pages/MainPage/MainPage";
 import ReceiptPage from "./pages/ReceiptPage/ReceiptPage";
 import LikePage from "./pages/LikePage/LikePage";
+import RecipePage from "./pages/RecipePage/RecipePage";
 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -44,6 +45,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/receipt" element={<ReceiptPage />} />
             <Route path="likes" element={<LikePage />} />
+            <Route path="recipe" element={<RecipePage />} />
           </Route>
         </Routes>
       </Router>
