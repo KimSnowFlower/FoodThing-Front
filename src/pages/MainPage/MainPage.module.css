@@ -26,6 +26,8 @@
 }
 
 .mainContent {
+    width: 100%;
+    max-width: var(--container-w);
     min-height: calc(100vh - var(--top-h) - var(--tab-h) - var(--safe-top) - var(--safe-bottom));
     padding-top: calc(var(--top-h) + 16px);
     padding-bottom: calc(var(--tab-h) + 16px);
