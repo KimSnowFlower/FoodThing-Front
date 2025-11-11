@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 
 // 보호 라우트
 import MainPage from "./pages/MainPage/MainPage";
+import ReceiptPage from "./pages/ReceiptPage/ReceiptPage";
 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -40,6 +41,7 @@ function App() {
           {/* 보호 라우트 (로그인 인증 후 접근 가능 */}
           <Route element={<ProtectedRoute/>}>
             <Route path="/" element={<MainPage />}/>
+            <Route path="/receipt" element={<ReceiptPage/>} />
           </Route>
         </Routes>
       </Router>

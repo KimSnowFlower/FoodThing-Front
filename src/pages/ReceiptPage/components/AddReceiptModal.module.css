@@ -1,0 +1,179 @@
+.receiptModalBackDrop {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.receiptModal {
+    width: var(--container);
+    max-width: 380px;
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--accent);
+}
+
+.modalHeader h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.modalClose {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modalBody {
+    padding: 12px 14px;
+    overflow: auto;
+}
+
+.addDate {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0;
+}
+
+.purchaseDate {
+    margin: 0;
+}
+
+.dateInput {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.addItems {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0;
+}
+
+.addItemsHeader {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.addItemsLabel {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.addItemBtn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.addItemsList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.addItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.addItemName,
+.addItemQuantity {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+}
+
+.addItemName p,
+.addItemQuantity p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.addItem input {
+    width: 85%;
+    box-sizing: border-box;
+    height: auto;
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.addActions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.addCancelBtn,
+.addSubmitBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.addCancelBtn {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: black;
+}
+
+.addSubmitBtn {
+    background: var(--accent);
+    color: black;
+}

@@ -1,0 +1,25 @@
+.receiptPage {
+    width: 100%;
+    max-width: var(--container-w);
+    height: calc(var(--vh) * 100);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: var(--bg);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.receiptWrap {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 0;
+    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
+}
