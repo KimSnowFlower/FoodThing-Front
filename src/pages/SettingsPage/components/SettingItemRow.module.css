@@ -1,0 +1,70 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #6b5a00;
+    flex: 0 0 auto;
+}
+
+.bell {
+    background: rgba(255, 204, 51, 0.12);
+}
+
+.utensil {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.iconImg {
+    width: 22px;
+    height: 22px;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sub {
+    font-size: 13px;
+    color: #8a8a8a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-word;
+}
+
+.chevron {
+    color: #888;
+    flex: 0 0 auto;
+}
