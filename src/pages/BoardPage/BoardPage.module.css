@@ -1,0 +1,100 @@
+:root {
+    --container-w: 430px;
+    --bg: #ffffff;
+    --top-h: 56px;
+    --tab-h: 64px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --vh: 1vh;
+}
+
+.page {
+    width: 100%;
+    max-width: var(--container-w);
+    height: calc(var(--vh) * 100);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: var(--bg);
+    margin: 0 auto;
+}
+
+.wrap {
+    width: 100%;
+    max-width: var(--container-w);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 0;
+    padding-top: calc(var(--top-h) + var(--safe-top));
+    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
+}
+
+.content {
+    height: calc((var(--vh) * 100) - var(--top-h) - var(--tab-h) - var(--safe-top) - var(--safe-bottom));
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 16px;
+}
+
+.loading,
+.empty {
+    padding: 12px;
+    color: #6f6a60;
+}
+
+.tabbarFixed {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+    max-width: var(--container-w);
+    height: var(--tab-h);
+    background: #fff;
+    z-index: 100;
+}
+
+.writeArea {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--tab-h) + 12px);
+    width: 100%;
+    max-width: var(--container-w);
+    display: flex;
+    justify-content: center;
+    z-index: 110;
+}
+
+.writeBtn {
+    width: 60%;
+    height: 38px;
+    border-radius: 14px;
+    border: 1px solid #e8e3da;
+    background: #e7cc7a;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #0000001a;
+    border-radius: 999px;
+}

@@ -10,6 +10,9 @@ import ReceiptPage from "./pages/ReceiptPage/ReceiptPage";
 import LikePage from "./pages/LikePage/LikePage";
 import RecipePage from "./pages/RecipePage/RecipePage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import BoardPage from "./pages/BoardPage/BoardPage";
+import BoardWrite from "./pages/BoardPage/BoardWritePage";
+import BoardDetail from "./pages/BoardPage/BoardDetailPage";
 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -48,6 +51,9 @@ function App() {
             <Route path="likes" element={<LikePage />} />
             <Route path="recipe" element={<RecipePage />} />
             <Route path="settings" element={<SettingsPage />} />
+            <Route path="/board" element={<BoardPage />} />
+            <Route path="/board/write" element={<BoardWrite />} />
+            <Route path="/board/details" element={<BoardDetail />} />
           </Route>
         </Routes>
       </Router>
