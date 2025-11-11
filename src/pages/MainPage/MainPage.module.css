@@ -20,7 +20,6 @@
     flex-direction: column;
     position: relative;
     min-height: 0;
-
     padding-top: calc(var(--top-h) + var(--safe-top));
     padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
 }
@@ -28,7 +27,7 @@
 .mainContent {
     width: 100%;
     max-width: var(--container-w);
-    min-height: calc(100vh - var(--top-h) - var(--tab-h) - var(--safe-top) - var(--safe-bottom));
+    min-height: calc(100vh - var(--top-h) - var(--tab-h));
     padding-top: calc(var(--top-h) + 16px);
     padding-bottom: calc(var(--tab-h) + 16px);
     flex: 1 1 auto;

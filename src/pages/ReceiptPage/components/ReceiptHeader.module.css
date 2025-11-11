@@ -51,7 +51,7 @@
     margin: 0;
     font-size: 16px;
     font-weight: 800;
-    color: var(--ink);
+    color: var(--font);
     line-height: 1;
     white-space: nowrap;
     overflow: hidden;

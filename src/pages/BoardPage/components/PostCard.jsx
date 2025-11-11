@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import MediaCarousel from "./MediaCarousel";
-import styles from "../components/PostCard.module.css";
+import styles from "./PostCard.module.css";
 
 /** YYYY-MM-DD */
 const fmtDate = (iso) => {

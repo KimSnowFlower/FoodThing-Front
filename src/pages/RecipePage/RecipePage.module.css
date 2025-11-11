@@ -1,7 +1,10 @@
 .page {
     width: 100%;
     max-width: var(--container-w);
-    min-height: calc(var(--vh) * 100);
+
+    height: calc(var(--vh) * 100);
+    min-height: 0;
+
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -15,33 +18,39 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    position: relative;
+    min-height: 0;
     box-sizing: border-box;
     padding-top: calc(var(--top-h) + var(--safe-top));
     padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
 }
 
-/* 스크롤 영역 */
 .content {
+    width: 100%;
+    max-width: var(--container-w);
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: calc((var(--vh) * 100) - var(--top-h) - var(--tab-h) - var(--safe-top) - var(--safe-bottom));
+    min-height: calc(100vh - var(--top-h) - var(--tab-h));
+    padding-top: calc(var(--top-h) + 4px);
+    padding-bottom: calc(var(--tab-h) + 8px);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    padding: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    overflow: auto;
 }
 
 .title {
     font-size: 22px;
     font-weight: 800;
-    margin: 6px 0 4px;
     text-align: left;
     width: 100%;
 }
 
-/* 리스트/카드(Grid) */
 .list {
     list-style: none;
     padding: 0;
@@ -52,10 +61,9 @@
 }
 
 .card {
-    background: #fff;
+    background: var(--bg);
     border: 1px solid rgba(0, 0, 0, .08);
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
     padding: 0;
-    /* 버튼 내부에서 패딩 처리 */
 }

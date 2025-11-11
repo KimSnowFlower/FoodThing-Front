@@ -7,6 +7,7 @@ import FindId from "./pages/FindIdPage/FindId";
 import FindIdResult from "./pages/FindIdPage/FindResult";
 import ForgotPassword from "./pages/PasswordPage/ForgotPassword";
 import ResetPassword from "./pages/PasswordPage/ResetPassword";
+import RegisterPage from "./pages/RegisterPage/Register";
 
 // 보호 라우트
 import MainPage from "./pages/MainPage/MainPage";
@@ -53,6 +54,7 @@ function App() {
           <Route path="/find-id/result" element={<FindIdResult />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/register" element={<RegisterPage />} />
           {/* 보호 라우트 (로그인 인증 후 접근 가능 */}
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<MainPage />} />

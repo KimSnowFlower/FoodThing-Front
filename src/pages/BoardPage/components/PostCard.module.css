@@ -42,13 +42,15 @@
 }
 
 .name {
+    color: var(--font);
     font-size: 14px;
-    color: var(--ink);
+    font-weight: 800;
 }
 
 .time {
+    color: var(--font);
     font-size: 12px;
-    color: var(--muted);
+    font-weight: 800;
 }
 
 .more {
@@ -68,7 +70,7 @@
 .comment {
     margin: 8px 0 10px;
     font-size: 14px;
-    color: var(--ink);
+    color: var(--font);
 }
 
 .actions {

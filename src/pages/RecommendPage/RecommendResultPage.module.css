@@ -1,10 +1,11 @@
 .page {
     width: 100%;
     max-width: var(--container-w);
+
     height: calc(var(--vh) * 100);
     min-height: 0;
+
     display: flex;
-    min-height: 100dvh;
     overflow: hidden;
     background: var(--bg);
     color: var(--ink);
@@ -24,11 +25,15 @@
 }
 
 .content {
+    width: 100%;
+    max-width: var(--container-w);
+    min-height: calc(100vh - var(--top-h) - var(--tab-h));
+    padding-top: calc(var(--top-h) + 16px);
+    padding-bottom: calc(var(--tab-h) + 16px);
     position: relative;
     flex: 1 1 auto;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding: 12px 14px 100px;
 }
 
 /* Header */
@@ -43,6 +48,7 @@
 }
 
 .title {
+    color: var(--font);
     margin: 0;
     font-size: 22px;
     font-weight: 800;
@@ -69,13 +75,14 @@
 .card {
     margin-top: 14px;
     background: var(--panel);
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid var(--accent);
     border-radius: 14px;
     box-shadow: var(--shadow);
     padding: 12px 12px 14px;
 }
 
 .cardTitle {
+    color: var(--font);
     margin: 0 0 10px;
     font-size: 16px;
     font-weight: 800;
