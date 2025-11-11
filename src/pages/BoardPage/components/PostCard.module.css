@@ -1,0 +1,89 @@
+:root {
+    --container-w: 430px;
+    --ink: #111;
+    --muted: #6f6a60;
+    --bd: #e8e3da;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--bd);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    margin-bottom: 16px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px 10px;
+    background: #faf7f0;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ded7cc;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.name {
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.time {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.more {
+    all: unset;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 4px 8px;
+}
+
+.body {
+    padding: 12px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.comment {
+    margin: 8px 0 10px;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions button {
+    all: unset;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: #f3efe7;
+    border: 1px solid var(--bd);
+    font-size: 16px;
+    line-height: 1;
+}

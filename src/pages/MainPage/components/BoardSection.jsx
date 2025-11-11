@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import SectionCard from "./SectionCard";
 import styles from "./BoardSection.module.css";
 
 
 export default function BoardSection({ loading, items, onClickItem, formatDate }) {
+    const navigate = useNavigate();
+
     return (
         <SectionCard
             title="게시판"
             right={
-                <button type="button" className={styles.navigateBtn} onClick={() => onClickItem?.(null)}>
+                <button type="button" className={styles.navigateBtn} onClick={() => navigate("/board")}>
                     게시판 이동
                 </button>
             }
