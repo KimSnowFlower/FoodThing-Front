@@ -1,180 +1,149 @@
-import { useEffect, useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-// components
-//import TopBar from '../../components/TopBar';
-//import TabBar from '../../components/TabBar';
-import TodayWhatEat from './components/TodayWhatEat';
-import RankingSection from './components/RankingSection';
-
-// lib api
+import { useEffect, useMemo, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+//import TopBar from "../../components/TopBar";
+//import TabBar from "../../components/TabBar";
 import api from "../../lib/api";
 
-// css
-import "../MainPage/MainPage.module.css";
+import TodayWhatEatSection from "./components/TodayWhatEat";
+import RankingSection from "./components/RankingSection";
+import BoardSection from "./components/BoardSection";
 
-// assets
-import searchIconSrc from '../../assets/images/search_icon.svg';
-import sendIconSrc from '../../assets/images/arrow_circle_icon.svg';
-import todayIconSrc from '../../assets/images/today_what_eat_icon.png';
-import BoardSection from './components/BoardSection';
+import styles from "./MainPage.module.css";
 
-const MainPage = () => {
+// 공통 날짜 포맷터 (KST)
+const formatKST = (iso) => {
+    if (!iso) return "-";
+    try {
+        return new Date(iso).toLocaleString("ko-KR", {
+            timeZone: "Asia/Seoul",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        });
+    } catch {
+        return iso;
+    }
+};
+
+export default function MainPage() {
     const navigate = useNavigate();
 
-    // 오늘 뭐 해먹지? - 입력값
-    const [ingredientInput, setIngredientInput] = useState("");
+    // 오늘 뭐 해먹지?
+    const [query, setQuery] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+    const [submitErr, setSubmitErr] = useState("");
 
-    // 랭킹, 게시글 - api 값 저장
-    const [ranks, setRanks] = useState([]);
+    // 리스트 데이터
     const [posts, setPosts] = useState([]);
-
-    // 로딩 관련
-    const [loading, setLoading] = useState(false);
+    const [ranks, setRanks] = useState([]);
     const [listsLoading, setListsLoading] = useState(false);
 
-    // Error
-    const [error, setError] = useState("");
+    const limit = 5;
 
-    // API Response 값 제한
-    const limit= 5;
 
-    // KST 포멧
-    const formatKST = (iso) => {
-        if (!iso) return "-";
+    // 추천 요청 (폼 submit 핸들러)
+    const handleTodaySubmit = useCallback(async () => {
+        setSubmitErr("");
+        const chat = query.trim();
+        if (!chat) return;
+
 
         try {
-            return new Data(iso).toLocaleString("ko-KR", {
-                timeZone: "Asia/Seoul",
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-            });
-        } catch {
-            return iso;
+            setSubmitting(true);
+            const res = await api.post("/recipe/ingredient-cook", { chat });
+            navigate("/recommend/result", { state: { result: res.data, query: chat } });
+        } catch (e) {
+            console.error("[ingredient-cook 실패]", e);
+            setSubmitErr("추천 요청에 실패했어요. 잠시 후 다시 시도해주세요.");
+        } finally {
+            setSubmitting(false);
         }
-    }
+    }, [navigate, query]);
 
-    // useEffect
+
     useEffect(() => {
-        // 페이지 파운트 때마다 fetch 1회
         const ac = new AbortController();
 
-        fetchInitialData = async () => {
+
+        const fetchInitialData = async () => {
             setListsLoading(true);
 
-            // 동시 벙렬 처리 (랭킹, 게시판)
-            // 쿠키 포함은 api.js에서 설정 완료
+
+            const boardPromise = api.get("/board/list", {
+                params: { limit },
+                signal: ac.signal,
+            });
             const rankPromise = api.get("/recipe/ranking", {
                 params: { limit },
                 signal: ac.signal,
             });
 
-            const boardPromise = api.get("recipe/list", {
-                params: { limit },
-                signal: ac.signal,
-            });
+
+            boardPromise
+                .then((res) => {
+                    const list = Array.isArray(res.data) ? res.data : res.data?.data ?? [];
+                    setPosts(Array.isArray(list) ? list : []);
+                })
+                .catch((e) => {
+                    if (e?.code !== "ERR_CANCELED") {
+                        console.error("[/board/list 실패]", e);
+                        setPosts([]);
+                    }
+                });
+
 
             rankPromise
                 .then((res) => {
                     setRanks(Array.isArray(res.data) ? res.data : []);
                 })
                 .catch((e) => {
-                    if(e?.code !== "ERR_CANCELED") {
-                        console.error("[/recipe/ranking 호출 실패", e);
+                    if (e?.code !== "ERR_CANCELED") {
+                        console.error("[/recipe/ranking 실패]", e);
                         setRanks([]);
                     }
-                });
-            
-            boardPromise
-                .then((res) => {
-                    setPosts(Array.isArray(res.data) ? res.data : []);
                 })
-                .catch((e) => {
-                    if(e?.code !== "ERR_CANCELED") {
-                        console.error("[/recipe/board 호출 실패", e);
-                        setPosts([]);
-                    }
-                });
-
-            setListsLoading(false);
+                .finally(() => setListsLoading(false));
         };
 
+
         fetchInitialData();
-
         return () => ac.abort();
-    }, []); // 마운트마다 실행
+    }, []);
 
-    // 게시글 리스트 중에 클릭한 게시글로 이동
-    const handleBoardItemClick = (postId) => {
-        if(postId == null) return;
+    const boardItems = useMemo(() => (posts?.length ? posts.slice(0, limit) : []), [posts]);
+    const rankItems = useMemo(() => (ranks?.length ? ranks.slice(0, limit) : []), [ranks]);
 
-        navigate(`/board/details`, { state: {postId: postId }});
-    }
-
-    const onSubmitTodayWhatEat = async (e) => {
-        e.preventDefault();
-        setError("");
-
-        const chat = ingredientInput.trim();
-
-        if (!chat) return;
-
-        try {
-            setLoading(true);
-
-            const res = await api.post(
-                "/recipe/ingredient-cook",
-                { chat },
-            )
-
-            navigate("/recommend/result", {state: { result: res.data, query: chat }});
-        } catch (e) {
-            console.error("[ingredient-cook 실패", e);
-            setError("추천 요청에 실패했어요. 잠시 후 다시 시도해주세요.");
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    const boardItems = useMemo(
-        () => (posts && posts.length ? posts.slice(0, limit) : []),
-        [posts]
-    );
-
-    const rankItems = useMemo(
-        () => (ranks && ranks.length ? ranks.slice(0, limit) : []),
-        [ranks]
-    )
-
-    return(
-        <div className="main-page page-style">
-            <div className="main-wrap">
-                <div className="main-content" role="main">
-                    <TodayWhatEat
-                        ingredientInput={ingredientInput}
-                        setIngredientInput={setIngredientInput}
-                        loading={loading}
-                        error={error}
-                        onSumbit={onSubmitTodayWhatEat}
-                        todayIconSrc={todayIconSrc}
-                        searchIconSrc={searchIconSrc}
-                        sendIconSrc={sendIconSrc}
+    return (
+        <div className={styles.mainPage}>
+            <div className={styles.mainWrap}>
+                <main className={styles.mainContent} role="main">
+                    {/* 오늘 뭐 해먹지? */}
+                    <TodayWhatEatSection
+                        value={query}
+                        onChange={setQuery}
+                        onSubmit={handleTodaySubmit}
+                        loading={submitting}
+                        error={submitErr}
                     />
 
-                    <RankingSection laoding={listsLoading} items={rankItems}/>
+                    {/* 랭킹 */}
+                    <RankingSection
+                        loading={listsLoading}
+                        items={rankItems}
+                    />
 
+                    {/* 게시판 */}
                     <BoardSection
                         loading={listsLoading}
                         items={boardItems}
-                        onNavigateBoard={() => navigate("/board")}
-                        onItemClick={handleBoardItemClick}
-                        formatKST={formatKST}
+                        onClickItem={(id, title) => {
+                            if (!id) return;
+                            navigate("/board/details", { state: { postId: id, title } });
+                        }}
+                        formatDate={formatKST}
                     />
-                </div>
+                </main>
             </div>
         </div>
     );
 }
-
-export default MainPage;

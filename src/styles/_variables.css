@@ -17,37 +17,19 @@
     --vh: 1vh;
 }
 
-html{ -webkit-text-size-adjust: 100%; }
-*{ box-sizing: border-box; }
-html, body, #root{ height:100%; }
-
-#root {
-    margin: 0 auto;
-    text-align: center;
+body, #root {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 100vh;
+  background: var(--bg);
 }
 
 body{
   margin:0;
   font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", Roboto, Arial, sans-serif;
-  background: var(--login-bg);
+  background: var(--bg);
   color: var(--ink);
   font-size:16px;
-  overflow-x:hidden; /* 우발적 가로 스크롤 방지 → 초기 스케일 흔들림 방지 */
+  overflow-x:hidden;
 }
-
-.page-style {
-    width: 100%;
-    max-width: var(--container-w);
-    height: calc(var(--vh) * 100);
-    min-height: 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    overflow: hidden;
-    background: var(--bg);
-    margin: 0 auto;
-    padding: 0;
-}
-@supports (height: 100dvh) { .page-style { min-height: 100dvh; }}
