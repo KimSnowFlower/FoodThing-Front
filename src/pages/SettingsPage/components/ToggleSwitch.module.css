@@ -1,0 +1,29 @@
+.toggle {
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    background: #eee;
+    transition: all 150ms ease;
+    flex: 0 0 auto;
+}
+
+.on {
+    background: linear-gradient(90deg, #ffd95f, #ffcc33);
+}
+
+.knob {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transform: translateX(0);
+    transition: transform 150ms ease;
+}
+
+.on .knob {
+    transform: translateX(20px);
+}

@@ -9,6 +9,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import ReceiptPage from "./pages/ReceiptPage/ReceiptPage";
 import LikePage from "./pages/LikePage/LikePage";
 import RecipePage from "./pages/RecipePage/RecipePage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -46,6 +47,7 @@ function App() {
             <Route path="/receipt" element={<ReceiptPage />} />
             <Route path="likes" element={<LikePage />} />
             <Route path="recipe" element={<RecipePage />} />
+            <Route path="settings" element={<SettingsPage />} />
           </Route>
         </Routes>
       </Router>
