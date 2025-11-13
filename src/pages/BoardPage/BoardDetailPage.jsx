@@ -5,6 +5,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import TopBar from "../../components/TopBar";
 import TabBar from "../../components/TabBar";
 import MediaCarousel from "../BoardPage/components/MediaCarousel";
+import CommentSection from "../BoardPage/components/CommentSection";
 
 // api
 import api from "../../lib/api";
@@ -26,6 +27,8 @@ export default function BoardDetailPage() {
     const id = idFromState ?? params.id; // 둘 다 지원
 
     const [post, setPost] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [isCommentsOpen, setIsCommentsOpen] = useState(false);
 
     useEffect(() => {
         if (id != null) fetchPostDetail(id);
@@ -33,10 +36,31 @@ export default function BoardDetailPage() {
 
     const fetchPostDetail = async (postId) => {
         try {
-            const res = await api.get(`/board/${postId}`, { withCredentials: true });
-            setPost(res.data);
+            const posts = await api.get(`/board/${postId}`, { withCredentials: true });
+            setPost(posts.data);
+
+            const comments = await api.get(`/board/${postId}/comments`, { withCredentials: true });
+            setComments(comments.data);
         } catch (error) {
             console.error("[fetchPostDetail 실패]", error);
+        }
+    };
+
+    const handleAddComment = async (comment) => {
+        try {
+            const form = new URLSearchParams();
+            form.append("comment", comment);
+
+            const res = await api.post(`/board/${id}/comment`, form, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded", // 🔥 반드시 필요
+                },
+                withCredentials: true,
+            });
+
+            setComments((prev) => [...prev, res.data]);
+        } catch (error) {
+            console.error("[댓글 작성 실패]", error);
         }
     };
 
@@ -71,8 +95,15 @@ export default function BoardDetailPage() {
 
                                 <div className={styles.actions}>
                                     <button type="button">❤️ 좋아요 {post?.like_count ?? 0}</button>
-                                    <button type="button">💬 댓글</button>
+                                    <button type="button" onClick={() => setIsCommentsOpen((prev) => !prev)}>💬 댓글 {comments.length}</button>
                                 </div>
+
+                                {/* To do 댓글이 보이는 기능 추가 */}
+                                <CommentSection
+                                    isOpen={isCommentsOpen}
+                                    comments={comments}
+                                    onSubmit={handleAddComment}
+                                />
                             </div>
                         </article>
                     ) : (

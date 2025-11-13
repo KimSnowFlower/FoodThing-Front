@@ -174,3 +174,112 @@
     background: rgba(0, 0, 0, 0.16);
     border-radius: 8px;
 }
+
+/* 댓글 전체 영역 */
+.commentSection {
+    margin-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 8px;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+        max-height 0.28s ease,
+        opacity 0.28s ease,
+        transform 0.28s ease;
+}
+
+/* 열렸을 때 */
+.commentSectionOpen {
+    max-height: 400px;
+    /* 댓글이 많으면 프로젝트에 맞게 조정 */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 댓글 헤더 */
+.commentHeader {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+/* 댓글 리스트 */
+.commentList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.commentItem {
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+/* 댓글 메타 (작성자 + 날짜) */
+.commentMeta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #777;
+    margin-bottom: 2px;
+}
+
+.commentAuthor {
+    font-weight: 600;
+}
+
+.commentTime {
+    font-size: 11px;
+    color: #aaa;
+}
+
+/* 댓글 내용 */
+.commentContent {
+    font-size: 13px;
+    color: #333;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* 댓글 폼 */
+.commentForm {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+.commentInput {
+    flex: 1;
+    resize: none;
+    font-size: 13px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    outline: none;
+}
+
+.commentInput:focus {
+    border-color: #ffd95f;
+    box-shadow: 0 0 0 1px rgba(255, 217, 95, 0.4);
+}
+
+.commentSubmit {
+    border: none;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #ffd95f;
+    color: #2d2d2d;
+    white-space: nowrap;
+}
