@@ -1,7 +1,7 @@
 name: react
 app: web
 options:
-  docbase: /build
+  docbase: /dist
   nodeversion: "20"
   spa: true
   install: npm ci --no-audit --fund=false
