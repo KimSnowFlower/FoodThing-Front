@@ -31,10 +31,13 @@ export default function CommentSection({ isOpen, comments, onSubmit }) {
                     <li key={c.id} className={styles.commentItem}>
                         <div className={styles.commentMeta}>
                             <span className={styles.commentAuthor}>
-                                {c.author?.nickname ?? "익명"}
+                                {c.user_nickname ?? "익명"} |
+                            </span>
+                            <span className={styles.comment}>
+                                {c.comment}
                             </span>
                             <span className={styles.commentTime}>
-                                {fmtDate(c.created_at)} {c.comment}
+                                {fmtDate(c.created_at)}
                             </span>
                         </div>
                         <p className={styles.commentContent}>{c.content}</p>
