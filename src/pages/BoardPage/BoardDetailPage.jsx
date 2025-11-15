@@ -9,6 +9,7 @@ import CommentSection from "../BoardPage/components/CommentSection";
 
 // api
 import api from "../../lib/api";
+import { boardApi } from "../../lib/boardApi";
 
 // css
 import styles from "../BoardPage/BoardDetailPage.module.css";
@@ -34,12 +35,12 @@ export default function BoardDetailPage() {
         if (id != null) fetchPostDetail(id);
     }, [id]);
 
-    const fetchPostDetail = async (postId) => {
+    const fetchPostDetail = async (boardId) => {
         try {
-            const posts = await api.get(`/board/${postId}`, { withCredentials: true });
+            const posts = await boardApi.getBoardById(boardId);
             setPost(posts.data);
 
-            const comments = await api.get(`/board/${postId}/comments`, { withCredentials: true });
+            const comments = await boardApi.getBoardCommentById(boardId);
             setComments(comments.data);
         } catch (error) {
             console.error("[fetchPostDetail 실패]", error);
@@ -51,13 +52,7 @@ export default function BoardDetailPage() {
             const form = new URLSearchParams();
             form.append("comment", comment);
 
-            const res = await api.post(`/board/${id}/comment`, form, {
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded", // 🔥 반드시 필요
-                },
-                withCredentials: true,
-            });
-
+            const res = await boardApi.addComment(boardId, form);
             setComments((prev) => [...prev, res.data]);
         } catch (error) {
             console.error("[댓글 작성 실패]", error);

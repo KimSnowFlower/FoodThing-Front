@@ -8,7 +8,7 @@ import PostCard from "../BoardPage/components/PostCard";
 import ErrorBox from "../BoardPage/components/ErrorBox";
 
 // api
-import api from "../../lib/api";
+import { boardApi } from "../../lib/boardApi";
 
 // css
 import styles from "../BoardPage/BoardPage.module.css";
@@ -31,7 +31,7 @@ export default function BoardPage() {
             try {
                 setLoading(true);
                 setErr(null);
-                const res = await api.get("/board/list", { signal: ac.signal, withCredentials: true });
+                const res = await boardApi.getAllBoard({ signal: ac.signal, withCredentials: true });
                 const list = Array.isArray(res.data) ? res.data : res.data?.data ?? [];
                 if (reqIdRef.current === myReqId) setPosts(list);
             } catch (e) {
@@ -54,7 +54,7 @@ export default function BoardPage() {
                     <ErrorBox error={err} />
                     {!loading && !err && posts.length === 0 && <div className={styles.empty}>게시물이 없습니다.</div>}
                     {!loading && !err && posts.map((p) => (
-                        <div key={safeKey(p.id)} onClick={() => navigate(`/board/${p.id}`, { state: { postId: p.id } })}>
+                        <div key={safeKey(p.id)} onClick={() => navigate("/board/details", { state: { postId: p.id } })}>
                             <PostCard
                                 post={p}
                                 onLike={() => {/* TODO: 좋아요 API */ }}
@@ -63,7 +63,7 @@ export default function BoardPage() {
                         </div>
                     ))}
                 </main>
-            </div>
+            </div >
 
             <div className={styles.writeArea}>
                 <button className={styles.writeBtn} onClick={() => navigate("/board/write")} type="button">
@@ -74,6 +74,6 @@ export default function BoardPage() {
             <div className={styles.tabbarFixed}>
                 <TabBar />
             </div>
-        </div>
+        </div >
     );
 }

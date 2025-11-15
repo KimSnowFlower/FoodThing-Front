@@ -4,9 +4,9 @@ import TopBar from "../../components/TopBar";
 import TabBar from "../../components/TabBar";
 
 // api
-import api from "../../lib/api";
 import { recipeApi } from "../../lib/recipeApi";
 import { rankApi } from "../../lib/rankApi";
+import { boardApi } from "../../lib/boardApi";
 
 // assets
 import TodayWhatEatSection from "./components/TodayWhatEat";
@@ -75,11 +75,7 @@ export default function MainPage() {
             setListsLoading(true);
 
 
-            const boardPromise = api.get("/board/list", {
-                params: { limit },
-                signal: ac.signal,
-            });
-
+            const boardPromise = boardApi.getAllBoard({ params: { limit }, signal: ac.signal });
             const rankPromise = rankApi.getRanking({ params: { limit }, signal: ac.signal });
 
             boardPromise
