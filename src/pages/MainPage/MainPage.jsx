@@ -2,12 +2,16 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "../../components/TopBar";
 import TabBar from "../../components/TabBar";
-import api from "../../lib/api";
 
+// api
+import { recipeApi } from "../../lib/recipeApi";
+
+// assets
 import TodayWhatEatSection from "./components/TodayWhatEat";
 import RankingSection from "./components/RankingSection";
 import BoardSection from "./components/BoardSection";
 
+// css
 import styles from "./MainPage.module.css";
 
 // 공통 날짜 포맷터 (KST)
@@ -50,7 +54,7 @@ export default function MainPage() {
 
         try {
             setSubmitting(true);
-            const res = await api.post("/recipe/ingredient-cook", { chat });
+            const res = await recipeApi.generateRecipeByIngredients(chat);
             navigate("/recommend/result", { state: { result: res.data, query: chat } });
         } catch (e) {
             console.error("[ingredient-cook 실패]", e);
@@ -116,7 +120,7 @@ export default function MainPage() {
     return (
         <div className={styles.mainPage}>
             <div className={styles.mainWrap}>
-                <TopBar/>
+                <TopBar />
 
                 <main className={styles.mainContent} role="main">
                     {/* 오늘 뭐 해먹지? */}
@@ -146,7 +150,7 @@ export default function MainPage() {
                     />
                 </main>
 
-                <TabBar/>
+                <TabBar />
             </div>
         </div>
     );

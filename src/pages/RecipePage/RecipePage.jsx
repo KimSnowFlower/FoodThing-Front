@@ -6,7 +6,7 @@ import TopBar from "../../components/TopBar";
 import TabBar from "../../components/TabBar";
 
 // api
-import api from "../../lib/api";
+import { recipeApi } from "../../lib/recipeApi";
 
 import RecipeList from "../RecipePage/components/RecipeList";
 import StateBlock from "../RecipePage/components/StateBlock";
@@ -32,9 +32,7 @@ export default function RecipePage() {
         try {
             setErr("");
             setLoading(true);
-            const res = await api.get("/recipe/suggest", {
-                headers: { accept: "application/json" },
-            });
+            const res = await recipeApi.getSuggestRecipe();
             const list = res?.data?.recipes ?? [];
             setRecipes(Array.isArray(list) ? list.slice(0, 5) : []);
         } catch (e) {
@@ -52,9 +50,7 @@ export default function RecipePage() {
             try {
                 setErr("");
                 setLoading(true);
-                const res = await api.get("/recipe/suggest", {
-                    headers: { accept: "application/json" },
-                });
+                const res = await recipeApi.getSuggestRecipe();
                 if (!alive) return;
                 const list = res?.data?.recipes ?? [];
                 setRecipes(Array.isArray(list) ? list.slice(0, 5) : []);
@@ -81,9 +77,7 @@ export default function RecipePage() {
                 difficulty: Number(difficulty) || 0,
             };
 
-            const res = await api.post("/recipe/cook", requestBody, {
-                headers: { accept: "application/json", "Content-Type": "application/json" },
-            });
+            const res = await recipeApi.getFoodRecipe(requestBody);
 
             const data = res?.data;
             if (!data) {
