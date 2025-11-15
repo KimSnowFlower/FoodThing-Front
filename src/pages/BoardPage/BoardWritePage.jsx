@@ -7,6 +7,7 @@ import TabBar from "../../components/TabBar";
 
 // api
 import api from "../../lib/api";
+import { boardApi } from "../../lib/boardApi";
 
 // css
 import styles from "../BoardPage/BoardWritePage.module.css";
@@ -72,11 +73,7 @@ export default function BoardWritePage() {
             form.append("content", content.trim());
             if (file) form.append("images", file);
 
-            const res = await api.post("/board", form, {
-                headers: { "Content-Type": "multipart/form-data" },
-                withCredentials: true,
-                validateStatus: () => true,
-            });
+            const res = await boardApi.addBoard(form);
 
             if (res.status === 201) {
                 navigate("/board", { replace: true });
