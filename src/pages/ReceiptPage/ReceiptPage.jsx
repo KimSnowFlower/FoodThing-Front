@@ -1,11 +1,14 @@
-// src/pages/ReceiptPage/ReceiptPage.jsx
 import { useEffect, useState, useCallback } from "react";
 import TabBar from "../../components/TabBar";
 import ReceiptHeader from "./components/ReceiptHeader";
 import ReceiptGroupList from "./components/ReceiptGroupList";
 import ReceiptGroupModal from "./components/ReceiptGroupModal";
 import AddReceiptModal from "./components/AddReceiptModal";
-import api from "../../lib/api";
+
+// api
+import { receiptApi } from "../../lib/ReceiptApi";
+
+// css
 import styles from "../ReceiptPage/ReceiptPage.module.css";
 
 // assets
@@ -24,7 +27,8 @@ export default function ReceiptPage() {
     // ====== 데이터 조회 함수(재사용) ======
     const fetchReceipts = useCallback(async () => {
         try {
-            const res = await api.get("/ingredients/detail");
+            const res = await receiptApi.fetchIngredientsDetail();
+
             const grouped = (res?.data?.ingredients || []).reduce((acc, cur) => {
                 const d = cur.purchase_date;
                 (acc[d] ??= []).push(cur);
@@ -107,13 +111,14 @@ export default function ReceiptPage() {
             }
         }
 
+
         setSubmitting(true);
         try {
             // 여러 품목 동시 전송 (배치)
             const requests = items.map(it =>
-                api.post("/ingredients", {
+                receiptApi.addIngredients({
                     ingredient_name: it.name.trim(),
-                    category_id: String(Number(it.quantity)), // quantity -> category_id
+                    category_id: String(Number(it.quantity)),
                     purchase_date,
                 })
             );
