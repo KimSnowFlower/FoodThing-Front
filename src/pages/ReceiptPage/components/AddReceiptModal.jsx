@@ -1,4 +1,3 @@
-// src/pages/ReceiptPage/components/AddReceiptModal.jsx
 import styles from "../components/AddReceiptModal.module.css";
 
 export default function AddReceiptModal({
