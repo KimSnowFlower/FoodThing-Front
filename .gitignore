@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+.cloudtype
 
 # Editor directories and files
 .vscode/*

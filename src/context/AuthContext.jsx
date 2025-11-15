@@ -1,5 +1,8 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
+
+// api
 import api from "../lib/api";
+import { userApi } from "../lib/userApi";
 
 const AuthContext = createContext(null);
 const TOKEN_NAME = "access_token";
@@ -21,13 +24,12 @@ function deleteCookie(name) {
     if (!hasDocument()) return;
 
     // Path=/ 필수, 만료 과거로
-    document.cookie = `${name}=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; SameSite=Lax${
-        location?.protocol === "https:" ? "; Secure" : ""
-    }`;
+    document.cookie = `${name}=; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/; SameSite=Lax${location?.protocol === "https:" ? "; Secure" : ""
+        }`;
 
     try {
-        localStorage.setItem("__auth_event__", JSON.stringify({ t: Date.now(), ev: "logout"}));
-    } catch {}
+        localStorage.setItem("__auth_event__", JSON.stringify({ t: Date.now(), ev: "logout" }));
+    } catch { }
 }
 
 
@@ -38,13 +40,12 @@ function setCookie(name, value, days = 7) {
 
     document.cookie = `${name}=${encodeURIComponent(
         value
-    )}; Expires=${expires}; Path=/; SameSite=Lax${
-        location?.protocol === "https:" ? "; Secure" : ""
-    }`;
+    )}; Expires=${expires}; Path=/; SameSite=Lax${location?.protocol === "https:" ? "; Secure" : ""
+        }`;
 
     try {
-        localStorage.setItem("__auth_event__", JSON.stringify({ t: Date.now(), ev: "login"}));
-    } catch {}
+        localStorage.setItem("__auth_event__", JSON.stringify({ t: Date.now(), ev: "login" }));
+    } catch { }
 }
 
 // JWT helpers
@@ -95,7 +96,7 @@ function bootstrapFromCookie() {
 
     if (!token || isExpired(token)) {
         if (token && isExpired(token)) deleteCookie(TOKEN_NAME);
-        return { authed: false, user: null};
+        return { authed: false, user: null };
     }
 
     return { authed: true, user: deriveUserFromToken(token) };
@@ -127,7 +128,7 @@ export function AuthProvider({ children }) {
                         setUser(deriveUserFromToken(t));
                     }
                 }
-            } catch(e) {
+            } catch (e) {
 
             }
         }
@@ -141,14 +142,14 @@ export function AuthProvider({ children }) {
         setLoading(true);
 
         try {
-            const res = await api.post("/users/log-in", { email, password });
+            const res = await userApi.login({ email, password });
 
-            const token = 
+            const token =
                 res.data?.access_token ||
                 res.data?.accessToken ||
                 res.data?.token ||
                 res.data?.jwt;
-                
+
             if (!token) {
                 throw new Error("로그인 응답에 access token이 없습니다.");
             }
@@ -161,10 +162,10 @@ export function AuthProvider({ children }) {
 
             try {
                 localStorage.setItem(TOKEN_NAME, token);
-            } catch {}
+            } catch { }
 
             return { ok: true }
-        } catch(e) {
+        } catch (e) {
             return {
                 ok: false,
                 error: e?.message || "로그인 중 오류가 발생했습니다.",
@@ -179,7 +180,7 @@ export function AuthProvider({ children }) {
 
         try {
             localStorage.removeItem(TOKEN_NAME);
-        } catch {}
+        } catch { }
 
         setUser(null);
         setAuthed(false);
