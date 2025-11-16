@@ -6,7 +6,6 @@ import TopBar from "../../components/TopBar";
 import TabBar from "../../components/TabBar";
 
 // api
-import api from "../../lib/api";
 import { boardApi } from "../../lib/boardApi";
 
 // css

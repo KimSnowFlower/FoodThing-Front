@@ -8,7 +8,6 @@ import MediaCarousel from "../BoardPage/components/MediaCarousel";
 import CommentSection from "../BoardPage/components/CommentSection";
 
 // api
-import api from "../../lib/api";
 import { boardApi } from "../../lib/boardApi";
 
 // css
