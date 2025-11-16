@@ -1,44 +1,56 @@
-import { useMemo } from "react";
-import MediaCarousel from "./MediaCarousel";
-import styles from "./PostCard.module.css";
+import styles from "../BoardPage.module.css";
 
 /** YYYY-MM-DD */
 const fmtDate = (iso) => {
     if (!iso) return "";
-    try { return new Date(iso).toISOString().split("T")[0]; } catch { return iso; }
+    try {
+        return new Date(iso).toISOString().split("T")[0];
+    } catch {
+        return iso;
+    }
 };
 
-export default function PostCard({ post, onLike, onComment }) {
+export default function PostCard({ post, onClick, onLike }) {
     const nickname = post?.author?.nickname ?? "익명";
     const title = post?.title ?? "";
-    const content = post?.content ?? "";
-    const likeCount = post?.like_count ?? 0;
     const created = fmtDate(post?.created_at);
-    const images = useMemo(() => (Array.isArray(post?.image_urls) ? post.image_urls.filter(Boolean) : []), [post?.image_urls]);
+
+    // like_count: 0 | 1 기준으로 상태 판단
+    const liked = post?.like_count === 1;
+
+    const handleLikeClick = (e) => {
+        e.stopPropagation(); // 상세 이동 막고 좋아요만 동작
+        onLike?.();
+    };
 
     return (
-        <article className={styles.card}>
-            <header className={styles.head}>
-                <div className={styles.author}>
-                    <div className={styles.avatar} aria-hidden />
-                    <div className={styles.meta}>
-                        <div className={styles.name}>{nickname}</div>
-                        <div className={styles.time}>{created}</div>
-                    </div>
+        <li className={styles.item}>
+            <div className={styles.inner} onClick={onClick}>
+                <div className={styles.titleRow}>
+                    {title && <h3 className={styles.title}>{title}</h3>}
                 </div>
-                <button type="button" className={styles.more} aria-label="더보기">⋯</button>
-            </header>
 
-            <MediaCarousel images={images} square dotLight />
+                <div className={styles.metaRow}>
+                    <div className={styles.metaLeft}>
+                        <span className={styles.nickname}>{nickname}</span>
+                        {created && (
+                            <>
+                                <span className={styles.dot}>·</span>
+                                <span className={styles.date}>{created}</span>
+                            </>
+                        )}
+                    </div>
 
-            <div className={styles.body}>
-                {title && <div className={styles.comment} style={{ fontWeight: 700 }}>{title}</div>}
-                {content && <div className={styles.comment}>{content}</div>}
-                <div className={styles.actions}>
-                    <button type="button" onClick={onLike}>❤️ 좋아요 {likeCount}</button>
-                    <button type="button" onClick={onComment}>💬 댓글</button>
+                    <button
+                        type="button"
+                        className={`${styles.likeBtn} ${liked ? styles.likeBtnActive : ""
+                            }`}
+                        onClick={handleLikeClick}
+                    >
+                        {liked ? "❤️ 좋아요" : "🤍 좋아요"}
+                    </button>
                 </div>
             </div>
-        </article>
+        </li>
     );
 }

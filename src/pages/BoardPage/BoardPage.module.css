@@ -22,25 +22,35 @@
     flex-direction: column;
     box-sizing: border-box;
     min-height: 0;
-    padding-top: calc(var(--top-h) + var(--safe-top));
-    padding-bottom: calc(var(--tab-h) + var(--safe-bottom));
 }
 
 .content {
     width: 100%;
     max-width: var(--container-w);
     min-height: calc(100vh - var(--top-h) - var(--tab-h));
-    padding-top: calc(var(--top-h) + 16px);
-    padding-bottom: calc(var(--tab-h) + 16px);
+
+    /* 내부 여백 */
+    padding-top: calc(var(--top-h));
+    padding-bottom: calc(var(--tab-h));
+    padding-left: 16px;
+    padding-right: 16px;
+
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    padding-left: 16px;
-    padding-right: 16px;
     box-sizing: border-box;
     overflow: auto;
+}
+
+/* 게시글 리스트(목차형) */
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .loading,
@@ -95,4 +105,85 @@
 .content::-webkit-scrollbar-thumb {
     background: #0000001a;
     border-radius: 999px;
+}
+
+.item {
+    width: 100%;
+    border-bottom: 1px solid #e5ddd0;
+    /* 리스트 구분선 */
+    padding: 12px 0;
+    box-sizing: border-box;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+/* 제목 */
+.titleRow {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--font, #2d2d2d);
+    line-height: 1.4;
+}
+
+/* 메타 (작성자, 날짜, 좋아요) */
+.metaRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #8b8578;
+}
+
+.metaLeft {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nickname {
+    font-weight: 600;
+}
+
+.dot {
+    opacity: 0.7;
+}
+
+.date {
+    font-size: 11px;
+    color: #aaa093;
+}
+
+/* 좋아요 버튼 */
+.likeBtn {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    color: #c55a3b;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 4px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.likeBtn:hover {
+    background: rgba(197, 90, 59, 0.08);
+}
+
+.likeBtnActive {
+    color: #ff4b4b;
+    font-weight: 600;
 }
